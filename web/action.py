@@ -1164,7 +1164,9 @@ class WebAction:
         if tid:
             ret = Sites().get_sites(siteid=tid)
             if ret.get("rssurl"):
-                site_attr = SiteConf().get_grap_conf(ret.get("rssurl"))
+                log.debug(f"【Sites】 获取站点 {str(ret)}")
+                site_attr = SiteConf().get_grap_conf(ret.get("strict_url"))
+                log.debug(f"【Sites】 获取站点属性 {str(site_attr)}")
                 if site_attr.get("FREE"):
                     site_free = True
                 if site_attr.get("2XFREE"):

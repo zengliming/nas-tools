@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import re
+import time
+
 import log
 
 from app.sites.siteuserinfo._base import _ISiteUserInfo, SITE_BASE_ORDER
@@ -161,6 +162,8 @@ class MTeamTorrentUserInfo(_ISiteUserInfo):
         self.download = int(memberCount.get("downloaded", 0))
         # 拉取做种信息
         self._mt_get_seeding_info()
+        log.info(f"【MTeamUserInfo】 休眠2秒获取下载信息")
+        time.sleep(2)
         # 拉取下载信息
         self._mt_get_leeching_info()
 

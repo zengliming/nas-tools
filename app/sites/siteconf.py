@@ -93,8 +93,11 @@ class SiteConf:
 
     def get_grap_conf(self, url=None):
         if not url:
-            return self.user.get_brush_conf()
-        for k, v in self.user.get_brush_conf().items():
+            return {}
+        brush_conf = self.user.get_brush_conf()
+        for k in brush_conf:
+            v = brush_conf[k]
+            log.debug(f"【Sites】 匹配站点信息 {k} : {url}")
             if StringUtils.url_equal(k, url):
                 return v
         return {}

@@ -126,6 +126,7 @@ class ProUser(UserMixin):
     _user_sites = {}
     _public_sites = []
     _brush_conf = {}
+    _site_to_brush_conf = {}
 
     def __init__(self, user=None):
         self.dbhelper = DbHelper()
@@ -146,10 +147,11 @@ class ProUser(UserMixin):
             "level": 2,
             'search': 1
         }]
-        user_sites, public_sites, brush_conf = self.__parse_users_sites(Config().get_user_sites_bin_path())
+        user_sites, public_sites, brush_conf, site_to_brush_conf = self.__parse_users_sites(Config().get_user_sites_bin_path())
         self._user_sites = user_sites
         self._public_sites = public_sites
         self._brush_conf = brush_conf
+        self._site_to_brush_conf = site_to_brush_conf
 
     def verify_password(self, password):
         """
@@ -287,22 +289,25 @@ class ProUser(UserMixin):
                 user_sites = json.loads(decoded_sites_string)
 
                 public_sites = []
+                site_to_brush_conf = {}
                 if "indexer" in user_sites:
                     indexer_list = user_sites.get("indexer", [])
                     if indexer_list:
-                        for item in indexer_list:
+                        for domain in indexer_list:
+                            item = indexer_list[domain]
                             if "public" in item:
                                 public = item.get("public", False)
                                 if public:
                                     public_domain = item.get("domain", "")
                                     if StringUtils.is_string_and_not_empty(public_domain):
-                                        public_sites.append(public_domain)
+                                            public_sites.append(public_domain)
+                                else:
+                                    site_to_brush_conf[domain] = item.get("conf", {})
 
                 brush_conf = {}
                 if "conf" in user_sites:
                     brush_conf = user_sites.get("conf", {})
-
-                return user_sites, public_sites, brush_conf
+                return user_sites, public_sites, brush_conf, site_to_brush_conf
         except Exception as err:
             log.error(f"【User】用户站点索引解析失败: {str(err)}")
             recovery_msg = """
@@ -313,7 +318,7 @@ class ProUser(UserMixin):
 ----------------------------------------------------------------------------------------------------------
             """
             log.info(f"【User】\n{recovery_msg}")
-            return {}, [], {}
+            return {}, [], {}, {}
 
     def get_indexer(self, 
                     url,
@@ -370,7 +375,7 @@ class ProUser(UserMixin):
         return public_sites
 
     def get_brush_conf(self):
-        if self._brush_conf:
-            return self._brush_conf
-        _, _, brush_conf = self.__parse_users_sites(Config().get_user_sites_bin_path())
-        return brush_conf
+        if self._site_to_brush_conf:
+            return self._site_to_brush_conf
+        _, _, _, site_to_brush_conf = self.__parse_users_sites(Config().get_user_sites_bin_path())
+        return site_to_brush_conf
