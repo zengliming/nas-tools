@@ -19,8 +19,8 @@
 
 基于官方 3.2.3 版本
 
-[开发路线](https://github.com/hsuyelin/nas-tools/discussions/91)
-
+[开发路线](https://github.com/zengliming/nas-tools/discussions/91)
+- [x] 修复创建刷流任务时提示未通过考核期
 - [x] 支持Aria2/115/PikPak下载器
 - [x] 支持chromedriver114版本以上的谷歌浏览器
 - [x] 支持识别历史记录一键清理
@@ -32,7 +32,7 @@
 - [x] 修复官方原版豆瓣同步方式近期动态与全量同步失效
 - [x] 修复官方原版高清空间签到cookies错误
 - [x] 持续更新索引站点
-- [x] 更多功能请查阅 [版本发布](https://github.com/hsuyelin/nas-tools/releases)  更新日志 
+- [x] 更多功能请查阅 [版本发布](https://github.com/zengliming/nas-tools/releases)  更新日志 
 
 ## 安装
 ### 1、Docker
