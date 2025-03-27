@@ -1,11 +1,10 @@
 # NAS媒体库管理工具
 
-[![GitHub stars](https://img.shields.io/github/stars/hsuyelin/nas-tools?style=plastic)](https://github.com/hsuyelin/nas-tools/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/hsuyelin/nas-tools?style=plastic)](https://github.com/hsuyelin/nas-tools/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/hsuyelin/nas-tools?style=plastic)](https://github.com/hsuyelin/nas-tools/issues)
-[![GitHub license](https://img.shields.io/github/license/hsuyelin/nas-tools?style=plastic)](https://github.com/hsuyelin/nas-tools/blob/master/LICENSE.md)
-[![Docker pulls](https://img.shields.io/docker/pulls/hsuyelin/nas-tools?style=plastic)](https://hub.docker.com/r/hsuyelin/nas-tools)
-[![Platform](https://img.shields.io/badge/platform-amd64/arm64-pink?style=plastic)](https://hub.docker.com/r/hsuyelin/nas-tools)
+[![GitHub stars](https://img.shields.io/github/stars/zengliming/nas-tools?style=plastic)](https://github.com/zengliming/nas-tools/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/zengliming/nas-tools?style=plastic)](https://github.com/zengliming/nas-tools/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/zengliming/nas-tools?style=plastic)](https://github.com/zengliming/nas-tools/issues)
+[![GitHub license](https://img.shields.io/github/license/zengliming/nas-tools?style=plastic)](https://github.com/hsuyelin/nas-tools/blob/master/LICENSE.md)
+[![Docker pulls](https://img.shields.io/docker/pulls/zengliming/nas-tools?style=plastic)](https://hub.docker.com/r/zengliming/nas-tools)
 
 ## 维护声明
 
